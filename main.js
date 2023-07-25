@@ -1,16 +1,14 @@
 import { header } from "./modules/header";
+import { useHttp } from "./modules/https.request";
 import { reloadCards } from "./modules/reload";
 import axios from "axios"
 
 let body = document.body
 
 header()
+const {request} = useHttp()
 
-axios.get(`${import.meta.env.VITE_BASE_MOVIES}`, {
-    headers: {
-        Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`
-    }
-}).then(res => {
+request(`/movie/popular`, 'get').then(res => {
     console.log(res.data.results);
     reloadCards(res.data.results.slice(0, 8), cards)
     let cards_images = document.querySelectorAll(".card_img")

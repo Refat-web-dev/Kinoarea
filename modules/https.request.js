@@ -1,6 +1,7 @@
 import axios from "axios"
 
-const baseURL = import.meta.env.VITE_BASE_URL
+const baseURL =
+    import.meta.env.VITE_BASE_URL
 
 const enums = {
     get: "get",
@@ -17,10 +18,14 @@ export const useHttp = () => {
         }
 
         try {
-            const res = await axios[method](baseURL + url, body)
+            const res = await axios[method](baseURL + url, body, {
+                headers: {
+                    Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`
+                }
+            })
 
             if (res.status === 200 || res.status === 201) {
-                return res.data
+                return res
             }
         } catch (e) {
 
@@ -28,5 +33,7 @@ export const useHttp = () => {
         }
     }
 
-    return { request }
+    return {
+        request
+    }
 }

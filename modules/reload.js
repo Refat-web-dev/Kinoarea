@@ -34,6 +34,11 @@ export function reloadCards(arr, place) {
         card_img.append(rate, after)
         after.append(span)
         place.append(card)
+
+        span.onclick = () => {
+            location.assign('/pages/movies/?id=' + item.id)
+        }
+            
     }
 
 }
