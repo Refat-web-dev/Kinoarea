@@ -20,7 +20,7 @@ axios.get(`${import.meta.env.VITE_BASE_MOVIES}`, {
             body.style.backgroundImage = key
         }
         card_img.onmouseleave = () => {
-            body.style.backgroundImage = `url("/public/images/joker.png")`
+            body.style.backgroundImage = `url("/images/joker.png")`
         }
     })
 })
@@ -57,7 +57,7 @@ for (let icon of social_icons) {
     let a_social = document.createElement("a")
     let icon_social = document.createElement("img")
 
-    icon_social.src = `/public/icons/${icon}.svg`
+    icon_social.src = `/icons/${icon}.svg`
     icon_social.alt = `${icon}`
     a_social.href = "#"
 

@@ -29,7 +29,7 @@ export function header() {
         let a_social = document.createElement("a")
         let icon_social = document.createElement("img")
 
-        icon_social.src = `/public/icons/${icon}.svg`
+        icon_social.src = `/icons/${icon}.svg`
         icon_social.alt = `${icon}`
         a_social.href = "#"
 
@@ -63,7 +63,7 @@ export function header() {
     left.className = "left"
     logo.className = "logo"
 
-    logo_img.src = "/public/icons/logo.svg"
+    logo_img.src = "/icons/logo.svg"
     logo_img.alt = "logo"
 
     ul_social.className = "social"

@@ -102,7 +102,7 @@ h6 {
 
 body {
     background: #1E2538;
-    background-image: url("/public/images/joker.png");
+    background-image: url("/images/joker.png");
     background-position: 0 0;
     background-size: 100% 200%;
     background-repeat: no-repeat;
@@ -207,7 +207,7 @@ body {
             width: 30px;
             height: 30px;
             border-radius: 5px;
-            background-image: url("/public/icons/search.svg");
+            background-image: url("/icons/search.svg");
             box-shadow: 0 0 7px #FFF;
             background-size: 13px;
             background-repeat: no-repeat;
@@ -320,7 +320,7 @@ body {
             .card_img {
                 position: relative;
                 border-radius: 10px;
-                background-image: url("/public/images/joker.png");
+                background-image: url("/images/joker.png");
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -452,7 +452,7 @@ body {
     background: #000;
     height: 600px;
     background: lightgray;
-    background-image: url("/public/icons/faf.png");
+    background-image: url("/icons/faf.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -472,7 +472,7 @@ body {
         width: 100px;
         height: 100px;
         border-radius: 100%;
-        background-image: url("/public/icons/play.svg");
+        background-image: url("/icons/play.svg");
         background-position: center;
         background-size: 50px;
         background-repeat: no-repeat;
@@ -487,7 +487,7 @@ body {
 
         &:hover {
             background: #00000083;
-            background-image: url("/public/icons/play.svg");
+            background-image: url("/icons/play.svg");
             background-position: center;
             background-size: 50px;
             background-repeat: no-repeat;
