@@ -543,14 +543,22 @@ body {
         flex-direction: column;
         gap: 10px;
 
-        img {
+        button {
+            border-radius: 10px;
             cursor: pointer;
-            width: 35px;
             transition: .3s ease;
 
             &:hover {
                 scale: 1.2;
             }
+
+            &:active {
+                scale: .7;
+            }
+        }
+
+        img {
+            width: 35px;
         }
     }
 }
