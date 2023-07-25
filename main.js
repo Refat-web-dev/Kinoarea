@@ -17,7 +17,9 @@ axios.get(`${import.meta.env.VITE_BASE_MOVIES}`, {
     cards_images.forEach(card_img => {
         let key = card_img.getAttribute("data-backdrop")
         card_img.onmouseenter = () => {
-            body.style.backgroundImage = key
+            setTimeout(() => {
+                body.style.backgroundImage = key
+            }, 500);
         }
         card_img.onmouseleave = () => {
             body.style.backgroundImage = `url("/images/joker.png")`
