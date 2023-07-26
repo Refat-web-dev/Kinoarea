@@ -1,4 +1,4 @@
-let img = import.meta.env.VITE_BASE_IMG
+export let img = import.meta.env.VITE_BASE_IMG
 
 export function reloadCards(arr, place) {
     place.innerHTML = ""
@@ -41,4 +41,46 @@ export function reloadCards(arr, place) {
 
     }
 
+}
+let trailers_player = document.querySelector(".trailers_player")
+let trailers_title = document.querySelector(".trailers_title h2")
+let trailers_rate_l = document.querySelector(".like .counter")
+let trailers_rate_d = document.querySelector(".dislike .counter")
+
+
+export function reloadTrailers(arr, place) {
+    place.innerHTML = "";
+
+    let trailer_images = []; // Store all trailer_img elements in this array
+
+    for (let item of arr) {
+        let trailer = document.createElement("div");
+        let trailer_img = document.createElement("div");
+        let trailer_title = document.createElement("p");
+
+        trailer.className = "trailer";
+        trailer_img.className = "trailer_img";
+        trailer_title.className = "trailer_title";
+
+        trailer_img.style.backgroundImage = `url("${img + item.poster_path}")`;
+        trailer_title.innerHTML = item.title;
+
+        trailer.append(trailer_img, trailer_title);
+        place.append(trailer);
+
+        trailer_images.push(trailer_img);
+
+        trailer_img.onclick = () => {
+            trailer_images.forEach(btn => btn.classList.remove("trailer-active"));
+            trailer_img.classList.add("trailer-active");
+
+            setTimeout(() => {
+                trailers_player.style.backgroundImage = `url("${img + item.backdrop_path}")`;
+            }, 500);
+
+            trailers_title.innerHTML = item.title;
+            trailers_rate_l.innerHTML = item.vote_count;
+            trailers_rate_d.innerHTML = Math.round(item.vote_count / 3);
+        };
+    }
 }

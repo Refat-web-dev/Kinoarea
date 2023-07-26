@@ -1,6 +1,6 @@
 import { header } from "./modules/header";
 import { useHttp } from "./modules/https.request";
-import { reloadCards } from "./modules/reload";
+import { reloadCards, reloadTrailers } from "./modules/reload";
 import axios from "axios"
 
 let body = document.body
@@ -9,23 +9,52 @@ header()
 
 const { request } = useHttp()
 
+let some_trailers = document.querySelector(".some_trailers")
+let trailers_player_btn = document.querySelector(".trailers_player_btn")
+
+
 request(`/movie/popular`, 'get')
     .then(res => {
-        console.log(res.data.results);
+
         reloadCards(res.data.results.slice(0, 8), cards)
+
         let cards_images = document.querySelectorAll(".card_img")
+
         cards_images.forEach(card_img => {
+
             let key = card_img.getAttribute("data-backdrop")
+
             card_img.onmouseenter = () => {
                 setTimeout(() => {
                     body.style.backgroundImage = key
                 }, 500);
             }
+
             card_img.onmouseleave = () => {
                 body.style.backgroundImage = `url("/images/joker.png")`
             }
         })
+
+        reloadTrailers(res.data.results, some_trailers)
     })
+
+// const options = {
+//     method: 'GET',
+//     url: 'https://api.themoviedb.org/3/movie/popular',
+//     headers: {
+// accept: 'application/json',
+// Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmRhODA1NGUyN2ExZTk1YTJhMTJkZDE5OThjYWZiYiIsInN1YiI6IjY0YmU3MzQzZTlkYTY5MDEwZDQxOTAxNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.L7H6NDnAI8ToptlYW-nNps0pq-TcMn_e0IwlZDIBjkI'
+//     }
+// };
+
+// axios
+//     .request(options)
+//     .then(function (response) {
+//         console.log(response.data);
+//     })
+//     .catch(function (error) {
+//         console.error(error);
+//     });
 
 let tabs = document.querySelectorAll(".tabs li")
 
@@ -51,9 +80,11 @@ let social_icons = [
 let social = document.querySelector(".social_sub")
 
 let more = document.createElement("li")
+
 more.innerHTML = "..."
 more.style.cursor = "pointer"
 more.style.paddingBottom = "10px"
+
 for (let icon of social_icons) {
     let li_social = document.createElement("li")
     let a_social = document.createElement("a")
@@ -67,4 +98,3 @@ for (let icon of social_icons) {
     li_social.append(a_social)
     social.append(li_social, more)
 }
-
