@@ -11,12 +11,14 @@ const { request } = useHttp()
 
 let some_trailers = document.querySelector(".some_trailers")
 let trailers_player_btn = document.querySelector(".trailers_player_btn")
+let popular_films = document.querySelector(".popular_films")
 
 
 request(`/movie/popular`, 'get')
     .then(res => {
 
         reloadCards(res.data.results.slice(0, 8), cards)
+        reloadCards(res.data.results.slice(0, 4), popular_films)
 
         let cards_images = document.querySelectorAll(".card_img")
 
@@ -42,8 +44,8 @@ request(`/movie/popular`, 'get')
 //     method: 'GET',
 //     url: 'https://api.themoviedb.org/3/movie/popular',
 //     headers: {
-// accept: 'application/json',
-// Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmRhODA1NGUyN2ExZTk1YTJhMTJkZDE5OThjYWZiYiIsInN1YiI6IjY0YmU3MzQzZTlkYTY5MDEwZDQxOTAxNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.L7H6NDnAI8ToptlYW-nNps0pq-TcMn_e0IwlZDIBjkI'
+//         accept: 'application/json',
+//         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmRhODA1NGUyN2ExZTk1YTJhMTJkZDE5OThjYWZiYiIsInN1YiI6IjY0YmU3MzQzZTlkYTY5MDEwZDQxOTAxNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.L7H6NDnAI8ToptlYW-nNps0pq-TcMn_e0IwlZDIBjkI'
 //     }
 // };
 
@@ -62,6 +64,17 @@ tabs.forEach(tab => {
 
     tab.onclick = () => {
         tabs.forEach(tab => tab.classList.remove("active_tab"))
+
+        tab.classList.add("active_tab")
+    }
+
+})
+let tabs_time = document.querySelectorAll(".tabs_time li")
+
+tabs_time.forEach(tab => {
+
+    tab.onclick = () => {
+        tabs_time.forEach(tab => tab.classList.remove("active_tab"))
 
         tab.classList.add("active_tab")
     }

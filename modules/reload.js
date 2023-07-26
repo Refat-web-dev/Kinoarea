@@ -51,7 +51,7 @@ let trailers_rate_d = document.querySelector(".dislike .counter")
 export function reloadTrailers(arr, place) {
     place.innerHTML = "";
 
-    let trailer_images = []; // Store all trailer_img elements in this array
+    let trailer_images = []; 
 
     for (let item of arr) {
         let trailer = document.createElement("div");
@@ -80,7 +80,7 @@ export function reloadTrailers(arr, place) {
 
             trailers_title.innerHTML = item.title;
             trailers_rate_l.innerHTML = item.vote_count;
-            trailers_rate_d.innerHTML = Math.round(item.vote_count / 3);
+            trailers_rate_d.innerHTML = Math.round(item.vote_count / 4);
         };
     }
 }
