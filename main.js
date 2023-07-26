@@ -6,24 +6,26 @@ import axios from "axios"
 let body = document.body
 
 header()
-const {request} = useHttp()
 
-request(`/movie/popular`, 'get').then(res => {
-    console.log(res.data.results);
-    reloadCards(res.data.results.slice(0, 8), cards)
-    let cards_images = document.querySelectorAll(".card_img")
-    cards_images.forEach(card_img => {
-        let key = card_img.getAttribute("data-backdrop")
-        card_img.onmouseenter = () => {
-            setTimeout(() => {
-                body.style.backgroundImage = key
-            }, 500);
-        }
-        card_img.onmouseleave = () => {
-            body.style.backgroundImage = `url("/images/joker.png")`
-        }
+const { request } = useHttp()
+
+request(`/movie/popular`, 'get')
+    .then(res => {
+        console.log(res.data.results);
+        reloadCards(res.data.results.slice(0, 8), cards)
+        let cards_images = document.querySelectorAll(".card_img")
+        cards_images.forEach(card_img => {
+            let key = card_img.getAttribute("data-backdrop")
+            card_img.onmouseenter = () => {
+                setTimeout(() => {
+                    body.style.backgroundImage = key
+                }, 500);
+            }
+            card_img.onmouseleave = () => {
+                body.style.backgroundImage = `url("/images/joker.png")`
+            }
+        })
     })
-})
 
 let tabs = document.querySelectorAll(".tabs li")
 

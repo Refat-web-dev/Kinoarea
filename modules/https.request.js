@@ -20,6 +20,7 @@ export const useHttp = () => {
         try {
             const res = await axios[method](baseURL + url, body, {
                 headers: {
+                    accept: 'application/json',
                     Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`
                 }
             })
