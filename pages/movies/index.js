@@ -7,8 +7,8 @@ header()
 const movie_id = location.search.split('=').at(-1)
 
 
-const {request} = useHttp()
+const { request } = useHttp()
 
-// movie/movie_id/credits
-request(`/movie/${movie_id}/credits`, 'get')
-    .then(res => console.log(res))  
+request(`/movie/${movie_id}`, 'get')
+    .then(res => console.log(res))
+

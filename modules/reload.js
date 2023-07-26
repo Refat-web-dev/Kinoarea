@@ -38,7 +38,7 @@ export function reloadCards(arr, place) {
         span.onclick = () => {
             location.assign('/pages/movies/?id=' + item.id)
         }
-            
+
     }
 
 }
